@@ -1,0 +1,24 @@
+<div class="row">
+  
+    <% @pokedex.each do |pokemon| %>
+    
+        <div class="col-md-3">
+
+            <%= link_to(pokemon) do %>
+                <div class="thumbnail">
+                    <img src="<%= pokemon.sprite %>">
+
+                    <div class="caption">
+                        <p>
+                            <h3 class="pokemon-id pokemon-name">
+                                <strong>#<%= pokemon.nat_pd_id %> <%= pokemon.name %></strong>
+                            </h3>
+                        </p>
+                    </div>
+                </div>
+            <% end %>
+
+        </div>
+    <% end %>
+
+</div>

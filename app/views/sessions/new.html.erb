@@ -1,0 +1,20 @@
+<div class="login">
+	<h3 class="section">Login</h3>
+
+	<%= form_for(:session, url: login_path) do |f| %>
+		<table class="login-signup-table">
+			<tr>
+				<td><%= f.label :username, "Username:", class: "label" %></td>
+				<td><%= f.text_field :username %></td>
+			</tr>
+			
+			<tr>
+				<td><%= f.label :password, "Password:", class: "label" %></td>
+				<td><%= f.password_field :password %></td>
+			</tr>
+		</table>
+
+		<span><%= f.submit "Log in", class: "btn btn-primary" %>
+	<% end %>
+	<%= link_to "Sign up", "/signup", class: "btn btn-primary" %></span>
+</div>

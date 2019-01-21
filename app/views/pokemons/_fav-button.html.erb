@@ -1,0 +1,29 @@
+<% @favorite = current_user.favorites.find_by( user_id: current_user.id, pokemon_id: @pokemon["id"] ) %>
+
+<% if @favorite.instance_of? Favorite %>
+  
+  <div id="unfav-btn">
+	  <%= form_for(@favorite, html: { method: :delete }, remote: true) do |f| %>
+
+    <%= button_tag type: 'submit', class: "fav-unfav-btn" do %>
+      <%= fa_icon "heart 2x" %>
+    <% end %>
+
+    <% end %>
+  </div>
+
+<% else %>
+  
+  <div id="fav-btn">
+  	<%= form_for(current_user.favorites.build, remote: true) do |f| %>
+
+		  <div><%= hidden_field_tag :pokemon_id, @pokemon["id"] %></div>
+
+      <%= button_tag type: 'submit', class: "fav-unfav-btn" do %>
+        <%= fa_icon "heart-o 2x" %>
+      <% end %>
+
+	  <% end %>
+  </div>
+
+<% end %>

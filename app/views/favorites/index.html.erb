@@ -1,0 +1,32 @@
+<div class="row">
+    
+    <% if @user_favorites.empty? %>
+        <h5 class="text" style="padding-left: 18px;">You do not have any favorites yet!</h2>
+    <% else %>
+        <% @user_favorites.each do |favorite| %>
+
+            <% pokemon = Pokemon.find_by( nat_pd_id: favorite.pokemon_id ) %>
+
+            <div class="col-md-3">
+
+                <%= link_to(pokemon) do %>
+                    <div class="thumbnail">
+                        <img src="<%= pokemon.sprite %>">
+                        <div class="caption">
+                            <p>
+                                <h3 class="pokemon-id pokemon-name">
+                                    <strong>#<%= pokemon.nat_pd_id %> <%= pokemon.name %></strong>
+                                </h3>
+                            </p>
+                        </div>
+                    </div>
+                <% end %>
+
+            </div>
+        <% end %>
+    <% end %>
+</div>
+
+<div>
+    <%= link_to "Back", '/pokemons', class: "btn btn-primary" %>
+</div>

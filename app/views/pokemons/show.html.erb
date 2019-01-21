@@ -1,0 +1,67 @@
+<div class="show row">
+	
+	<img src="<%= @pokemon["sprites"]["front_default"] %>" width="250"> 
+
+  	<div class="col-sm-8 text">
+
+		
+		<table class="table-layout">
+			<thead>
+				<tr>
+					<th><h3 class="pokemon-name"><strong><%= @pokemon["name"].capitalize %></strong></h3></th>
+					<th class="fav-head"><%= render "fav-button" %></th>
+				</tr>
+			</thead>
+
+			<tbody>
+			<tr>
+				<td>National Pokédex id.</td>
+				<td><p class="pokemon-id">#<%= @pokemon["id"] %></p></td>
+			</tr>
+
+			<tr>
+				<td>Pokédex Entry</td>
+				<td><p class="pokemon-flavor-text"><%= @flavor_text %></p></td>
+			</tr>
+
+			<tr>
+				<td>Type(s)</td>
+				<td><p class="pokemon-types">
+					<% @pokemon["types"].each do |t| %>
+						<%= t["type"]["name"].capitalize %> 
+					<% end %>
+				</p></td>
+			</tr>
+
+			<tr>
+				<td>Height</td>
+				<td><p class="pokemon-height"><%= @pokemon["height"]/10.0 %> m</p></td>
+			</tr>
+			<tr>
+				<td>Weight</td>
+				<td><p class="pokemon-weight"><%= @pokemon["weight"]/10.0 %> kg</p></td>
+			</tr>
+
+			<tr>
+				<td>Abilities</td>
+				<td><p class="pokemon-abilities">
+					<% @pokemon["abilities"].each do |a| %>
+						<%= a["ability"]["name"].capitalize %><br>
+					<% end %>
+				</p></td>
+			</tr>
+
+			<tr>
+				<td>Base stats</td>
+				<td><p class="pokemon-stats">
+					<% @pokemon["stats"].each do |s| %>
+						<%= s["stat"]["name"].capitalize %>: <%= s["base_stat"] %><br>
+					<% end %>
+				</p></td>
+			</tr>
+		</tbody></table>
+
+		<%= link_to "Back", url_for(:back), class: "btn btn-primary" %>
+
+  	</div>
+</div>

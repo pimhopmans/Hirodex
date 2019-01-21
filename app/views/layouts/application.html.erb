@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hirodex</title>
+    <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/projects/bootstrap.min.css">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="header">
+      <div class="container">
+
+        <!-- This defines what is in the header -->
+        <%= link_to image_tag("https://i.imgur.com/P1vIkA5.png", width: 200, class: "logo"), root_url %>
+        <% if current_user %>
+          <%= link_to "Log out", '/logout', method: "delete", class: "header_button" %>
+          <%= link_to "Favorites", '/favorites', class: "header_button" %>
+          <span id="header_username"><%= current_user.username %></span>
+
+        <% else %>
+          <%= link_to "Log in", '/login', class: "header_button" %>
+          <%= link_to "Sign up", '/signup', class: "header_button" %>
+
+        <% end %>
+
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="container">
+
+        <%= yield %>
+      
+      </div>
+    </div>
+
+  </body>
+</html>
